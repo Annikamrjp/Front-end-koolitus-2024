@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+
+.nupp {
+font-weight: bold;
+border-radius: 5px;}
+
+.nupp:hover {background: pink;
+cursor: pointer;}
+
+.nupp:active {transform: scale(95%);}
+
+.pilt {width: 250px;
+/* height: 200px; */
+border-radius: 10px;}
+
+.pilt:hover {opacity: 80%;
+cursor: pointer;}
+
+.pilt:active {transform: scale(95%);}
