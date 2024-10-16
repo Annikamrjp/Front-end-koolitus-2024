@@ -1,0 +1,55 @@
+.App {
+  text-align: center;
+}
+
+body {background: beige;}
+
+.nupp {background: rgb(99, 191, 60);
+color: rgb(137, 137, 137);}
+
+.nupp:hover {height: 50px;}
+
+.nupp:active {cursor: grab;}
+
+.tekst {color: rgb(87, 87, 226);
+font-style: italic;}
+
+.tekst:hover {font-size: 20px;}
+
+.tekst2 {color: green;
+font-weight: bold;
+border: 2px solid red;}
+
+.tekst2:hover {border: 2px solid brown;}
+
+.pilt {width: 40%;
+height: 100%;
+float: right;}
+
+.pilt:hover {border: 2px solid red;
+  border-radius: 40px;
+opacity: 68%;}
+
+h2 {padding-top: 170px;}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+iframe {display: block;
+margin: 0 auto;
+padding-top: 30px;
+padding-bottom: 30px;
+border: none;}
