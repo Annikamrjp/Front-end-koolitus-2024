@@ -16,10 +16,10 @@ function App() {
         <button>Uudiste leht</button>
       </Link>
       <Link to="/kontakt">
-        <button>Võta meiega ühendust</button>
+        <button>Kontakt</button>
       </Link>
       <Link to="/meist">
-        <button>Info meist</button>
+        <button>Meist</button>
       </Link>
 
       <Routes>

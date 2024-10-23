@@ -6,6 +6,7 @@
 
 .pealkiri {font-size: 27px;}
 
-.keskus {font-weight: bold;}
+.keskus {font-weight: bold;
+cursor: pointer;}
 
 .tootaja {font-weight: bold;}

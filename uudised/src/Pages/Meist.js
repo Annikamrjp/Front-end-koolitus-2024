@@ -1,26 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Meist() {
+        const [kontakt, naitaKontakt] = useState("");
   return (
     <div>
-        <div>See on meist leht, nähtav localhost:3000/meist aadressil</div>
+        
         <div className="pealkiri">Meie töötajad:</div>
 <br></br>
         <div className="tootaja">Arvo Pärt</div>
-        <div>+123123123</div>
         <div>Uudisklippide taustamuusika</div>
+        <button onClick={() => naitaKontakt('+123123123')}>Võta ühendust</button>
+<br></br>
 <br></br>
         <div className="tootaja">Kelly Sildaru</div>
-        <div>+125125125</div>
         <div>Püstolreporter</div>
+        <button onClick={() => naitaKontakt('+125125125')}>Võta ühendust</button>
+<br></br>
 <br></br>
         <div className="tootaja">Edward von Lõngus</div>
-        <div>+127127127</div>
         <div>Uudiste kujundaja</div>
+        <button onClick={() => naitaKontakt('+127127127')}>Võta ühendust</button>
+<br></br>
 <br></br>
         <div className="tootaja">Kerli Kõiv</div>
-        <div>+129129129</div>
         <div>Välisturgude spetsialist</div>
+        <button onClick={() => naitaKontakt('+129129129')}>Võta ühendust</button>
+<br></br>
+<br></br>
+        { kontakt !== "" && <div>Kontakt: {kontakt}</div>}
 
     </div>
   )

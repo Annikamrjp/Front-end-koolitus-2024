@@ -3,7 +3,6 @@ import React from 'react'
 function Avaleht() {
   return (
     <div>
-        <div>A</div>
         <div>
             <div>Mickey</div>
             <div>Mouse</div>
