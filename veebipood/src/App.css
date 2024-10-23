@@ -19,3 +19,48 @@ border-radius: 10px;}
 cursor: pointer;}
 
 .pilt:active {transform: scale(95%);}
+
+.keel {font-size: 20px;}
+
+.keel-aktiivne {font-weight: bold;
+background-color: pink;
+font-size: 20px;}
+
+/* margin - väljapoole tõuge */
+/* padding - sissepoole tõuge */
+
+.summa  {cursor: pointer;
+font-size: 20px;
+background-color: rgb(215, 215, 215);
+padding: 10px;
+margin: 5px;
+border-radius: 7px;}
+
+.summa-aktiivne  {border-color: rgb(227 6 140);
+color:rgb(227 6 140);
+cursor: pointer;
+font-size: 20px;
+background-color: white;
+padding: 10px;
+margin: 5px;
+border-radius: 7px;}
+
+.linn-aktiivne {text-decoration: underline;
+  border-color: rgb(227 6 140);
+  color:rgb(227 6 140);
+  background-color: white;}
+
+.vaade {background-color: white;
+color: black;
+padding: 15px;
+margin: 5px;
+cursor: pointer}
+
+.vaade-aktiivne {background-color: black;
+color: white;
+padding: 15px;
+margin: 5px;
+}
+
+
+
