@@ -5,7 +5,7 @@ function LisaToode() {
   const toodeRef = useRef(); //HTMLi inputi sisestuse lugemiseks
 
   function lisa() {
-    // toodeRef.current.vvalue === "" ? muudaSonum("Tühja nimega ie saa") : muuda("Lisatud")
+    // toodeRef.current.value === "" ? muudaSonum("Tühja nimega ie saa") : muuda("Lisatud")
     if (toodeRef.current.value === "") 
       {muudaSonum("Toode on sisestamata!");} else 
       {muudaSonum("Toode lisatud: " + toodeRef.current.value);}

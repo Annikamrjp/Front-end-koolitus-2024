@@ -5,15 +5,15 @@
 body {background: black}
 
 .avalehepilt {width: 100%;
-  height: 380px;}
+height: 380px;}
 
-  h1 {color: rgb(88, 197, 234);
-  text-align: center;
+h1 {color: rgb(88, 197, 234);
+text-align: center;
 font-family:Georgia, 'Times New Roman', Times, serif;
 font-size: 40px;}
 
 .tekst {color: rgb(179, 236, 255);
-  text-align: center;
+text-align: center;
 font-family:Georgia, 'Times New Roman', Times, serif;
 font-size: 20px;}
 
@@ -48,9 +48,9 @@ font-family:Georgia, 'Times New Roman', Times, serif;}
 .nupulink {text-decoration: none;}
 
 .nupp {
-  background: rgb(88, 197, 234);
-  color: white;
-  display: flex;
+background: rgb(88, 197, 234);
+color: white;
+display: flex;
 text-align: center;
 justify-content: center;
 margin: auto;
@@ -61,5 +61,28 @@ text-decoration: none;
 }
 
 .nupp:hover {background: white;
-  color: black;
+color: black;
 cursor: pointer;}
+
+.kursus {background: rgb(88, 197, 234);
+color: white;
+flex-direction: row-reverse;
+text-align: center;
+margin: 10px;
+border: none;
+padding: 7px;
+text-decoration: none;
+cursor: pointer;}
+
+.kursus-aktiivne {background: white;
+color: black;
+
+border: none;
+padding: 15px;
+text-decoration: none;
+margin: 10px;
+flex-direction: row-reverse;
+text-align: center;}
+
+.courses-tekst {color: white;
+text-align: center;}
