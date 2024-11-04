@@ -9,7 +9,11 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import Naide from './pages/Naide';
 import Loader from './pages/Loader';
-
+import Animals from './pages/Animals';
+import Words from './pages/Words';
+import Monthss from './pages/Monthss';
+import Books from './pages/Books';
+import Numbrid from './pages/Numbrid';
 
 
 function App() {
@@ -53,6 +57,11 @@ function App() {
   <Route path="seaded" element={ <Seaded /> }></Route>
   <Route path="naide" element={ <Naide /> }></Route>
   <Route path="loader" element={ <Loader /> }></Route>
+  <Route path="months" element={ <Monthss /> }></Route>
+  <Route path="animals" element={ <Animals /> }></Route>
+  <Route path="words" element={ <Words /> }></Route>
+  <Route path="books" element={ <Books /> }></Route>
+  <Route path="numbrid" element={ <Numbrid /> }></Route>
 
 </Routes>
     

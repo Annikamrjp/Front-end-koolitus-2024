@@ -64,3 +64,10 @@
     transform: scale(0.9);
   }
 }
+
+.nupp {background-color:rgb(144, 203, 255);
+border: none;
+padding: 6px;
+margin: 4px;
+font-size: 13px;
+}

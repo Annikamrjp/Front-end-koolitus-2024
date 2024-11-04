@@ -94,7 +94,7 @@ function Esindused() {
 <button onClick={reset}>Tühjenda filtrid</button>
 
  <br></br>
-  {esindused.map(esindus => <div>{esindus}</div>)}
+  {esindused.map((esindus, index) => <div key={index}>{esindus}</div>)}
   {/* <div>Ülemiste</div>
   <div>Rocca</div>
   <div>Magistrali</div>

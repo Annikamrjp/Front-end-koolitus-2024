@@ -24,7 +24,7 @@ function Hinnad() {
         <button onClick={sorteeriKahanevalt}>Sorteeri kahanevalt</button>
         <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
 
-        {hinnad.map(hind => <div>{hind}</div>)}
+        {hinnad.map((hind, index) => <div key={index}>{hind}</div>)}
     </div>
   )
 }

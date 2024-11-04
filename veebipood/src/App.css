@@ -60,5 +60,10 @@ color: white;
 padding: 15px;
 margin: 5px;}
 
+table {margin: auto;}
 
+th, td {border-width: 1px;
+  border-style: solid;
+}
 
+th {background-color: lightgray;}
