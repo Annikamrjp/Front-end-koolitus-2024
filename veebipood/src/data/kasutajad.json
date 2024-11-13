@@ -1,0 +1,7 @@
+[
+    {"email": "aaaa@gmail.com", "parool": "KKKKK", "aasta": 2023, "uudiskiri": "Ei"},
+    {"email": "bbb@gmail.com", "parool": "jjjjjjjj", "aasta": 2022, "uudiskiri": "Jah"},
+    {"email": "cc@hotmail.com", "parool": "4444", "aasta": 2021, "uudiskiri": "Ei"},
+    {"email": "ddddd@gmail.com", "parool": "urarakaurara", "aasta": 2021, "uudiskiri": "Ei"}
+
+]

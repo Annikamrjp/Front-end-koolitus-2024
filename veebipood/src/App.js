@@ -17,6 +17,16 @@ import HaldaEsindused from './pages/halda/HaldaEsindused';
 import HaldaHinnad from './pages/halda/HaldaHinnad';
 import HaldaTootajad from './pages/halda/HaldaTootajad';
 import HaldaTooted from './pages/halda/HaldaTooted';
+import Autod from './pages/arrays/Autod';
+import Kasutajad from './pages/arrays/Kasutajad';
+import HaldaAutod from './pages/halda/HaldaAutod';
+import HaldaKasutajad from './pages/halda/HaldaKasutajad';
+import YksHind from './pages/yks/YksHind';
+import YksEsindus from './pages/yks/YksEsindus';
+import YksTootaja from './pages/yks/YksTootaja';
+import YksToode from './pages/yks/YksToode';
+import YksAuto from './pages/yks/YksAuto';
+import YksKasutaja from './pages/yks/YksKasutaja';
 
 function App() {
   return (
@@ -41,11 +51,24 @@ function App() {
       <Route path="hinnad" element={ <Hinnad /> } />
       <Route path="tootajad" element={ <Tootajad /> } />
       <Route path="tooted" element={ <Tooted /> } />
+      <Route path="autod" element={ <Autod /> } />
+      <Route path="kasutajad" element={ <Kasutajad /> } />
+
 
       <Route path="halda-esindused" element={ <HaldaEsindused /> } />
       <Route path="halda-hinnad" element={ <HaldaHinnad /> } />
       <Route path="halda-tootajad" element={ <HaldaTootajad /> } />
       <Route path="halda-tooted" element={ <HaldaTooted /> } />
+      <Route path="halda-autod" element={ <HaldaAutod /> } />
+      <Route path="halda-kasutajad" element={ <HaldaKasutajad /> } />
+
+      <Route path="esindus/:index" element={ <YksEsindus /> } />
+      <Route path="hind/:number" element={ <YksHind /> } />
+      <Route path="tootaja/:inimene" element={ <YksTootaja /> } />
+      <Route path="toode/:toode" element={ <YksToode /> } />
+      <Route path="auto/:auto_id" element={ <YksAuto /> } />
+      <Route path="kasutaja/:kasutaja" element={ <YksKasutaja /> } />
+
 
       <Route path="*" element={ <NotFound /> } />
     </Routes>

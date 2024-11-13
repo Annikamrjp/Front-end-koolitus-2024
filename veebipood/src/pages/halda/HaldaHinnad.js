@@ -1,24 +1,29 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef} from 'react';
+import hinnadFailist from '../../data/hinnad.json';
 
 function HaldaHinnad() {
-    const [hinnad, muudaHinnad] = useState([45, 9, 80, 123, 1000, 51, 77, 321, 91, 23]);
+    const [hinnad, muudaHinnad] = useState(hinnadFailist.slice());
     const hindRef = useRef();
 
     function kustuta(index) {
-        hinnad.splice(index, 1);
-        muudaHinnad(hinnad.slice())
+        hinnadFailist.splice(index, 1); // võtan failist ühe hinna vähemaks
+        muudaHinnad(hinnadFailist.slice()); // aga uuendab failist
     }
 
-    function lisa() {
-        hinnad.push(hindRef.current.value);
-        muudaHinnad(hinnad.slice());
+    function lisa(event) {
+        console.log(event)
+        if (event.key !== "Enter" && event.type !== "click") {
+            return;
+        }
+        hinnadFailist.push({"number": hindRef.current.value, "lisaja": "Sisselogitud_kasutaja"});
+        muudaHinnad(hinnadFailist.slice());
         hindRef.current.value = "";
     }
   
     return (
     <div>
         <label>Uus number</label> <br></br>
-        <input ref={hindRef} type="text"></input> <br></br>
+        <input onKeyUp={lisa} ref={hindRef} type="text"></input> <br></br>
         <button onClick={lisa}>Sisesta</button> <br></br>
 
       <br></br>
@@ -28,6 +33,7 @@ function HaldaHinnad() {
                     {/* <th>Index</th>
                     <th>Jrknr</th> */}
                     <th>Hind</th>
+                    <th>Lisaja</th>
                     <th>Kustuta</th>
                     </tr>
             </thead>
@@ -36,7 +42,8 @@ function HaldaHinnad() {
                 <tr key={index}>
                     {/* <td>{index}</td> */}
                     {/* <td>{index + 1}</td> tavapärane järjekord*/}
-                    <td>{hind}</td>
+                    <td>{hind.number}</td>
+                    <td>{hind.lisaja}</td>
                     <td><button onClick={() => kustuta(index)}>x</button></td>
                 </tr>)}
             </tbody>

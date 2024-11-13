@@ -1,65 +1,67 @@
 import React, {useState} from 'react'
 import Esindus from '../../components/Esindus'
+import esindusedFailist from '../../data/esindused.json';
+import {Link} from 'react-router-dom';
 
 // loogeliste sulgude vahel on JavaScript --> muutujad
 // 'something' is not defined. --> muutuja on loomata või importimata
 
 function Esindused() {
   const [linn, muudaLinn] = useState("Tallinn");
-  const [esindused, muudaEsindused] = useState(["Ülemiste", "Rocca al Mare", "Magistrali", "Vesse", "Kristiine", "Järveotsa"]);
+  const [esindused, muudaEsindused] = useState(esindusedFailist.slice());
 
   const sorteeriAZ = () => {
-    esindused.sort((a, b) => a.localeCompare(b, "et")); //"et" siis on täpitähed õiges järjestuses
+    esindused.sort((a, b) => a.nimi.localeCompare(b.nimi, "et")); //"et" siis on täpitähed õiges järjestuses
     muudaEsindused(esindused.slice())
   }
 
   const sorteeriZA = () => {
-    esindused.sort((a, b) => b.localeCompare(a, "et"));
+    esindused.sort((a, b) => b.nimi.localeCompare(a.nimi, "et"));
     muudaEsindused(esindused.slice())
   }
 
   const sorteeriTahemargidKasv = () => {
-    esindused.sort((a, b) => a.length - b.length);
+    esindused.sort((a, b) => a.nimi.length - b.nimi.length);
     muudaEsindused(esindused.slice())
   }
 
   const sorteeriTahemargidKah = () => {
-    esindused.sort((a, b) => b.length - a.length);
+    esindused.sort((a, b) => b.nimi.length - a.nimi.length);
     muudaEsindused(esindused.slice())
   }
 
   const sorteeriKolmasTahtAZ = () => {                    // 01234567
-    esindused.sort((a, b) => a[2].localeCompare(b[2]));   // Kristiine (3. täht = 2. täht)
+    esindused.sort((a, b) => a.nimi[2].localeCompare(b.nimi[2]));   // Kristiine (3. täht = 2. täht)
     muudaEsindused(esindused.slice())
   }
 
   const filtreeriEgaLoppevad = () => {
-    const vastus = esindused.filter(esindus => esindus.endsWith("e"));
+    const vastus = esindusedFailist.filter(esindus => esindus.nimi.endsWith("e"));
     muudaEsindused(vastus);
   }
 
   const filtreeriVah7Tahelised = () => {
-    const vastus = esindused.filter(esindus => esindus.length >= 7);
+    const vastus = esindusedFailist.filter(esindus => esindus.nimi.length >= 7);
     muudaEsindused(vastus);
   }
 
   const filtreeri9Tahelised = () => {
-    const vastus = esindused.filter(esindus => esindus.length === 9);
+    const vastus = esindusedFailist.filter(esindus => esindus.nimi.length === 9);
     muudaEsindused(vastus);
   }
 
   const filtreeriIsSisaldavad = () => {
-    const vastus = esindused.filter(esindus => esindus.includes("is"));
+    const vastus = esindusedFailist.filter(esindus => esindus.nimi.includes("is"));
     muudaEsindused(vastus);
   }
 
   const filtreeriNeljasTahtS = () => {
-    const vastus = esindused.filter(esindus => esindus[3] === "s");
+    const vastus = esindusedFailist.filter(esindus => esindus.nimi[3] === "s");
     muudaEsindused(vastus);
   }
 
   const reset = () => {
-    muudaEsindused(["Ülemiste", "Rocca al Mare", "Magistrali", "Vesse", "Kristiine", "Järveotsa"])
+    muudaEsindused(esindusedFailist.slice())
   }
 
   return (
@@ -94,7 +96,11 @@ function Esindused() {
 <button onClick={reset}>Tühjenda filtrid</button>
 
  <br></br>
-  {esindused.map((esindus, index) => <div key={index}>{esindus}</div>)}
+  {esindused.map((esindus, index) => <div key={index}>{esindus.nimi}
+    <Link to={"/esindus/" + index}>
+    <button>Vaata lähemalt</button>
+    </Link>
+  </div>)}
   {/* <div>Ülemiste</div>
   <div>Rocca</div>
   <div>Magistrali</div>

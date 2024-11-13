@@ -1,5 +1,6 @@
-import React, { useState } from 'react' // tuleb reactist: useState, useRef
-import { Link } from 'react-router-dom' //URL-ga seotud: Link, Route, Routes
+import React, { useState } from 'react'; // tuleb reactist: useState, useRef
+import { Link } from 'react-router-dom'; //URL-ga seotud: Link, Route, Routes
+import ostukorvFailist from '../data/ostukorv.json';
 
 // kirjutamisel kaks varianti:
 // 1. Emmet     div + enter --> <div></div>
@@ -8,7 +9,12 @@ import { Link } from 'react-router-dom' //URL-ga seotud: Link, Route, Routes
 //                      <Page dropdownist --> Page    ./pages/Page
 
 function Ostukorv() {
-  const [tooted, muudaTooted] = useState(["Coca","Fanta","Sprite","Vichy","Aura"]);
+  const [tooted, muudaTooted] = useState(ostukorvFailist.slice());
+
+function kustuta(index) {
+  ostukorvFailist.splice(index, 1);
+  muudaTooted(ostukorvFailist.slice());
+}
 
   return (
     <div>
@@ -16,8 +22,8 @@ function Ostukorv() {
 
       {tooted.map((toode, index) => 
         <div key={index}>
-          {toode}
-          <button>x</button>
+          {toode.nimi}
+          <button onClick={() => kustuta(index)}>x</button>
         </div>)}
 
       {tooted.length === 0 && <div>
