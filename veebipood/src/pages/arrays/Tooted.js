@@ -1,10 +1,16 @@
 import React, { useRef, useState } from 'react';
 import tootedFailist from '../../data/autod.json';
+import {Link} from 'react-router-dom';
+import ostukorvFailist from '../../data/ostukorv.json';
+import { ToastContainer, toast } from 'react-toastify';
+import { Button, TextField } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 // {"nimi": "", "hind": 25000, "aktiivne": true, "pilt": ""}
 
 function Tooted() {
-  const [tooted, muudaTooted] = useState(tootedFailist);
+  const { t } = useTranslation();
+  const [tooted, muudaTooted] = useState(tootedFailist.slice());
   const otsingRef = useRef();
 
   function otsi() {
@@ -21,22 +27,22 @@ function Tooted() {
 // Sorteeri
 
 function sorteeriAZ() {
-    tooted.sort((a, b) => a.localeCompare (b, "et"));
+    tooted.sort((a, b) => a.nimi.localeCompare (b.nimi, "et"));
     muudaTooted(tooted.slice());
 } 
 
 function sorteeriZA() {
-  tooted.sort((a, b) => b.localeCompare (a, "et"));
+  tooted.sort((a, b) => b.nimi.localeCompare (a.nimi, "et"));
   muudaTooted(tooted.slice());
 }
 
 function sorteeriKasvavalt() {
-  tooted.sort((a, b) => a.length - b.length);
+  tooted.sort((a, b) => a.nimi.length - b.nimi.length);
   muudaTooted(tooted.slice());
 }
 
 function sorteeriKahanevalt() {
-  tooted.sort((a, b) => b.length - a.length);
+  tooted.sort((a, b) => b.nimi.length - a.nimi.length);
   muudaTooted(tooted.slice());
 }
 
@@ -58,38 +64,64 @@ function algavadTga() {
 }
 
 function reset() {
-  muudaTooted(["Nobe", "Toyota", "Bentley", "BMW", "Tesla", "Nissan"]);
+  muudaTooted(tootedFailist);
+}
+
+function lisaOstukorvi(toode) {
+  ostukorvFailist.push(toode);
+  toast.success("Toode on edukalt lisatud ostukorvi!");
 }
 
   return (
     <div>
+      {/* <h1>{t('Welcome to React')}</h1> */}
     <br></br>
-
-    <span>Otsi toodet: </span> 
-        <input onChange={otsi} ref={otsingRef} type="text"></input> <br></br>
+ 
+        <TextField label="Otsi" onChange={otsi} inputRef={otsingRef} type="text"></TextField> <br></br>
       <br></br>
 
-      <div>Täthti kokku kõikide toodete peale peale: {arvutaKokku()}</div>
+      <div>Täthti kokku kõikide toodete peale: {arvutaKokku()}</div>
 
       <br></br>
 
-      <span>Sorteeri: </span>
-      <button onClick={sorteeriAZ}>A-Z</button>
-      <button onClick={sorteeriZA}>Z-A</button>
-      <button onClick={sorteeriKasvavalt}>Kasvavalt</button>
-      <button onClick={sorteeriKahanevalt}>Kahanevalt</button>
+      <span>{t("sort-header")}</span>
+      <Button onClick={sorteeriAZ}>{t("sort-az")}</Button>
+      <Button onClick={sorteeriZA}>{t("sort-za")}</Button>
+      <Button onClick={sorteeriKasvavalt}>Kasvavalt</Button>
+      <Button onClick={sorteeriKahanevalt}>Kahanevalt</Button>
 
     <br></br>
 
       <span>Filtreeri: </span>
-      <button onClick={algavadBga}>B-ga algavad</button>
-      <button onClick={algavadNga}>N-ga algavad</button>
-      <button onClick={algavadTga}>T-ga algavad</button>
+      <Button onClick={algavadBga}>B-ga algavad</Button>
+      <Button onClick={algavadNga}>N-ga algavad</Button>
+      <Button onClick={algavadTga}>T-ga algavad</Button>
 
     <br></br>
-      <button onClick={reset}>Tühjenda filtrid</button>
+      <Button onClick={reset}>Tühjenda filtrid</Button>
 
-      {tooted.map(toode => <div>{toode.nimi}</div>)}
+    <br></br>
+    <br></br>
+
+      {tooted.map((toode, index) => 
+      <div key={index}>
+        <img className="toote-pilt" src={toode.pilt} alt=""></img>
+        <div>{toode.nimi}</div>
+        <div>{toode.hind}</div>
+        {toode.aktiivne && <Button variant="contained" onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi 1</Button>}
+        {/* <button disabled={toode.aktiivne === false} onClick={() => lisaOstukorvi(toode)}>Lisa ostukorvi 2</button> */}
+
+        <Link to={"/toode/" + index}>
+        <Button variant="outlined">Vaata lähemalt</Button>
+        </Link>
+      </div>
+      )}
+
+<ToastContainer
+      position="bottom-right"
+      autoClose={3000}
+      theme="dark" />
+
     </div>
   )
 }

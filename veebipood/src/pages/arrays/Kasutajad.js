@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import kasutajadFailist from '../../data/kasutajad.json';
+import {Link} from 'react-router-dom';
 
 function Kasutajad() {
   const [kasutajad, muudaKasutajad] = useState(kasutajadFailist);
@@ -139,6 +140,7 @@ function gmail() {
           <th>Liitumise aasta</th>
           <th>Parool</th>
           <th>Liitunud uudiskirjaga</th>
+          <th>Vaata lähemalt</th>
         </tr>
       </thead>
       <tbody>
@@ -148,6 +150,9 @@ function gmail() {
           <td>{kasutaja.aasta}</td>
           <td>{kasutaja.parool}</td>
           <td>{kasutaja.uudiskiri}</td>
+          <td><Link to={"/kasutaja/" + index}>
+          <button>Vaata lähemalt</button>
+          </Link></td>
           </tr>
         ))}
       </tbody>

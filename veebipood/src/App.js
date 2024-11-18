@@ -9,7 +9,7 @@ import LisaToode from './pages/LisaToode';
 import Seaded from './pages/Seaded';
 import Kalkulaator from './pages/Kalkulaator';
 import NotFound from './pages/NotFound';
-import Menyy from './components/Menyy';
+// import Menyy from './components/Menyy';
 import Hinnad from './pages/arrays/Hinnad';
 import Tootajad from './pages/arrays/Tootajad';
 import Tooted from './pages/arrays/Tooted';
@@ -27,12 +27,25 @@ import YksTootaja from './pages/yks/YksTootaja';
 import YksToode from './pages/yks/YksToode';
 import YksAuto from './pages/yks/YksAuto';
 import YksKasutaja from './pages/yks/YksKasutaja';
+import { ContactUs } from './pages/ContactUs';
+import Kaart from './pages/Kaart';
+import MuudaAuto from './pages/muuda/MuudaAuto';
+import MuudaEsindus from './pages/muuda/MuudaEsindus';
+import MuudaHind from './pages/muuda/MuudaHind';
+import MuudaKasutaja from './pages/muuda/MuudaKasutaja';
+import MuudaToode from './pages/muuda/MuudaToode';
+import MuudaTootaja from './pages/muuda/MuudaTootaja';
+import NavigationBar from './components/NavigationBar';
+
+
 
 function App() {
   return (
     <div className="App">
 
-    <Menyy />
+    {/* <Menyy /> */}
+
+    <NavigationBar />
 
     {/* localhost:3000/esindused <div>10 esindust</div>
     localhost:3000/osta-kinkekaart <div>Kinkekaardi ostmine</div> 
@@ -65,9 +78,23 @@ function App() {
       <Route path="esindus/:index" element={ <YksEsindus /> } />
       <Route path="hind/:number" element={ <YksHind /> } />
       <Route path="tootaja/:inimene" element={ <YksTootaja /> } />
-      <Route path="toode/:toode" element={ <YksToode /> } />
+      <Route path="toode/:toodeIndex" element={ <YksToode /> } />
       <Route path="auto/:auto_id" element={ <YksAuto /> } />
       <Route path="kasutaja/:kasutaja" element={ <YksKasutaja /> } />
+
+      <Route path="tagasiside" element={ <ContactUs /> } />
+      <Route path="kaart" element={ <Kaart /> } />
+
+      <Route path="muuda-auto/:jrknr" element={ <MuudaAuto /> } />
+      <Route path="muuda-esindus/:esinduse_index" element={ <MuudaEsindus /> } />
+      <Route path="muuda-hind/:hind" element={ <MuudaHind /> } />
+      <Route path="muuda-kasutaja/:kasutaja" element={ <MuudaKasutaja /> } />
+      <Route path="muuda-toode/:toode" element={ <MuudaToode /> } />
+      <Route path="muuda-tootaja/:tootaja" element={ <MuudaTootaja /> } />
+
+
+
+
 
 
       <Route path="*" element={ <NotFound /> } />

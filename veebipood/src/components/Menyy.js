@@ -27,6 +27,14 @@ function Menyy() {
      <button className="nupp">Kalkulaator</button>
      </Link>
 
+     <Link to="/tagasiside">
+     <button className="nupp">Tagasiside</button>
+     </Link>
+
+     <Link to="/kaart">
+     <button className="nupp">Kaart</button>
+     </Link>
+
      <br></br>
      <br></br>
      
@@ -57,6 +65,9 @@ function Menyy() {
      <br></br>
      <br></br>
 
+     <Link to="/halda-autod">
+     <button className="nupp">Halda autod</button>
+     </Link>
 
      <Link to="/halda-esindused">
      <button className="nupp">Halda esindused</button>
@@ -64,6 +75,10 @@ function Menyy() {
 
      <Link to="/halda-hinnad">
      <button className="nupp">Halda hinnad</button>
+     </Link>
+
+     <Link to="/halda-kasutajad">
+     <button className="nupp">Halda kasutajad</button>
      </Link>
 
      <Link to="/halda-tootajad">
@@ -74,13 +89,6 @@ function Menyy() {
      <button className="nupp">Halda tooted</button>
      </Link>
 
-     <Link to="/halda-autod">
-     <button className="nupp">Halda autod</button>
-     </Link>
-
-     <Link to="/halda-kasutajad">
-     <button className="nupp">Halda kasutajad</button>
-     </Link>
      </div>
   )
 }

@@ -1,5 +1,6 @@
 import React, {useState, useRef} from 'react'
 import esindusedFailist from '../../data/esindused.json'
+import { Link } from 'react-router-dom';
 
 function HaldaEsindused() {          // jrk. nrid:     0            1               2           3           4           5                      
     const [esindused, muudaEsindused] = useState(esindusedFailist.slice());
@@ -57,11 +58,12 @@ function arvutaKokku() {
     return (
     <div>
     <br></br>
+
         <div>Täthti kokku kõikide esinduste peale: {arvutaKokku()}</div>
 
     <br></br>
 
-    <input onChange={otsi} ref={otsingRef} type="text"></input>
+    <input placeHolder="otsi" onChange={otsi} ref={otsingRef} type="text"></input>
     {/* <button onClick={otsi}>Otsi</button> */}
 
     <br></br>
@@ -95,6 +97,8 @@ function arvutaKokku() {
             <th>Telefon</th>
             <th>Aadress</th>
             <th>Kustuta</th>
+            <th>Muuda</th>
+
           </tr>
         </thead>
         <tbody>
@@ -104,6 +108,11 @@ function arvutaKokku() {
                 <td>{esindus.tel}</td>
                 <td>{esindus.aadress}</td>
                 <td><button onClick={() => kustuta(index)}>x</button></td>
+                <td>
+                    <Link to={"/muuda-esindus/" + index}>
+                    <button>Muuda</button>
+                    </Link>
+                </td>
             </tr>)}
         </tbody>
     </table>

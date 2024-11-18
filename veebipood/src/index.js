@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'leaflet/dist/leaflet.css';
+import 'react-toastify/dist/ReactToastify.css';
+// Kõike on võimalik üle kirjutada programmeerimises allpool
+// let muutuja = 2
+// muutuja = 3
 import './index.css';
+import './i18n';
 import App from './App';
 //import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'; 

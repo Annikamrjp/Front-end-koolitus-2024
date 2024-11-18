@@ -1,4 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
+import { Button } from '@mui/material';
+
 
 function Seaded() {
 const [keel, muudaKeel] = useState("est");
@@ -28,10 +30,17 @@ const [telefon, muudaTelefon] = useState();
 
   return (
   <div>
-    <div>{keel}</div>
-    <button className={keel === "est" ?  "keel-aktiivne" : "keel"} onClick={() => muudaKeel("est")}>Eesti</button>
-    <button className={keel === "eng" ? "keel-aktiivne" : "keel"} onClick={() => muudaKeel("eng")}>English</button>
-    <button className={keel === "rus" ? "keel-aktiivne" : "keel"} onClick={() => muudaKeel("rus")}>Pycckuj</button>
+<br></br>
+
+    <Button 
+      variant={keel === "est" ? "contained" : ""}
+      className={keel === "est" ?  "keel-aktiivne" : "keel"} onClick={() => muudaKeel("est")}>Eesti</Button>
+    <Button 
+      variant={keel === "eng" ? "contained" : ""}
+      className={keel === "eng" ? "keel-aktiivne" : "keel"} onClick={() => muudaKeel("eng")}>English</Button>
+    <Button 
+      variant={keel === "rus" ? "contained" : ""}
+      className={keel === "rus" ? "keel-aktiivne" : "keel"} onClick={() => muudaKeel("rus")}>Pycckuj</Button>
 
     {keel === "est" && <div>Leht on eesti keelne</div>}
     {keel === "eng" && <div>The site is in English</div>}

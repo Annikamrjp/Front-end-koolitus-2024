@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Esindus from '../../components/Esindus'
 import esindusedFailist from '../../data/esindused.json';
 import {Link} from 'react-router-dom';
+import { Button } from '@mui/material';
 
 // loogeliste sulgude vahel on JavaScript --> muutujad
 // 'something' is not defined. --> muutuja on loomata või importimata
@@ -67,11 +68,21 @@ function Esindused() {
   return (
     <div>
       <br></br>
-      <div>{linn}</div>
-<button className={linn === "Tallinn" ? "linn-aktiivne" : ""} onClick={() => muudaLinn("Tallinn")}>Tallinn</button>
-<button className={linn === "Tartu" ? "linn-aktiivne" : ""} onClick={() => muudaLinn("Tartu")}>Tartu</button>
-<button className={linn === "Narva" ? "linn-aktiivne" : ""} onClick={() => muudaLinn("Narva")}>Narva</button>
-<button className={linn === "Pärnu" ? "linn-aktiivne" : ""} onClick={() => muudaLinn("Pärnu")}>Pärnu</button>
+  <Button
+    variant={linn === "Tallinn" ? "contained" : ""}
+    className={linn === "Tallinn" ? "linn-aktiivne" : ""} onClick={() => muudaLinn("Tallinn")}>Tallinn</Button>
+  <Button 
+    variant={linn === "Tartu" ? "contained" : ""}
+    className={linn === "Tartu" ? "linn-aktiivne" : ""} onClick={() => muudaLinn("Tartu")}>Tartu</Button>
+  <Button 
+    variant={linn === "Narva" ? "contained" : ""}
+    className={linn === "Narva" ? "linn-aktiivne" : ""} onClick={() => muudaLinn("Narva")}>Narva</Button>
+  <Button 
+    variant={linn === "Pärnu" ? "contained" : ""}
+    className={linn === "Pärnu" ? "linn-aktiivne" : ""} onClick={() => muudaLinn("Pärnu")}>Pärnu</Button>
+
+<br></br>
+<br></br>
 
 
 {linn === "Tallinn" && 

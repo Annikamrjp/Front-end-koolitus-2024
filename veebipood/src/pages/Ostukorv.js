@@ -12,17 +12,29 @@ function Ostukorv() {
   const [tooted, muudaTooted] = useState(ostukorvFailist.slice());
 
 function kustuta(index) {
-  ostukorvFailist.splice(index, 1);
+  ostukorvFailist.splice(index, 1); // splice(mitmendat, mitu tk)
   muudaTooted(ostukorvFailist.slice());
+}
+
+function tuhjenda() {
+  ostukorvFailist.splice(0);  // alates 0ndast (esimesest) lõpuni välja
+  muudaTooted(ostukorvFailist.slice());
+}
+
+function arvutaKokku() {
+  let summa = 0;
+  tooted.forEach(toode => summa = summa + toode.hind)
+  return summa;
 }
 
   return (
     <div>
-      <button onClick={() => muudaTooted([])} >Tühjenda</button>
+      <button onClick={tuhjenda} >Tühjenda</button>
 
       {tooted.map((toode, index) => 
         <div key={index}>
-          {toode.nimi}
+          <img src={toode.pilt} style={{"width": "50px"}} alt=""></img>
+          {toode.nimi} - {toode.hind}€
           <button onClick={() => kustuta(index)}>x</button>
         </div>)}
 
@@ -32,6 +44,8 @@ function kustuta(index) {
       Mine avalehele
       </Link>
         </div>}
+
+        <div>Kokku: {arvutaKokku()}€</div>
       
     </div>
 

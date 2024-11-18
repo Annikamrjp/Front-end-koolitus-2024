@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
+import ostukorvFailist from '../data/ostukorv.json';
 
 function Kinkekaart() {
 const [summa, muudasumma] = useState(20);
@@ -9,9 +10,15 @@ const emailRef = useRef();
 const [sonum, muudaSonum] = useState();
 
 // "const sisesta = () => {}" on sama mis "function sisesta () {}"
-const sisesta = () => {if (emailRef.current.value === "") 
-  {muudaSonum("E-mail on sisestamata!")} else 
-  {muudaSonum("E-mail on sisestatud!")}; }
+const lisaOstukorvi = () => {if (emailRef.current.value === "") 
+  {muudaSonum("Ostukorvi on lisamata!")} else 
+  {muudaSonum("Ostukorvi on lisatud!")}; 
+  ostukorvFailist.push({"nimi": "Kinkekaart: " + emailRef.current.value, 
+  "hind": summa * kogus, 
+  "aktiivne": true, 
+  "pilt": ""
+});
+}
 
 
   return (
@@ -43,7 +50,7 @@ Kinkekaartide kogusuma: <span>{summa * kogus}</span>
 <div>{sonum}</div>
 <label>E-mail</label> <br></br>
 <input ref={emailRef} type="text"></input> <br></br>
-<button onClick={sisesta}>Sisesta</button> <br></br>
+<button onClick={lisaOstukorvi}>Lisa ostukorvi</button> <br></br>
     </div>
   )
 }

@@ -1,9 +1,11 @@
 import React, {useState, useRef} from 'react';
 import hinnadFailist from '../../data/hinnad.json';
+import { Link } from 'react-router-dom';
 
 function HaldaHinnad() {
     const [hinnad, muudaHinnad] = useState(hinnadFailist.slice());
     const hindRef = useRef();
+    const otsingRef = useRef();
 
     function kustuta(index) {
         hinnadFailist.splice(index, 1); // võtan failist ühe hinna vähemaks
@@ -19,9 +21,24 @@ function HaldaHinnad() {
         muudaHinnad(hinnadFailist.slice());
         hindRef.current.value = "";
     }
+
+    function otsi() {
+        const vastus = hinnadFailist.filter(hind =>
+             hind.number.toString().includes(otsingRef.current.value)
+            );
+        muudaHinnad(vastus);
+    }
   
     return (
     <div>
+    <br></br>
+
+        <input placeHolder="otsi" onChange={otsi} ref={otsingRef} type="text"></input>
+
+    <br></br>
+    <br></br>
+    
+
         <label>Uus number</label> <br></br>
         <input onKeyUp={lisa} ref={hindRef} type="text"></input> <br></br>
         <button onClick={lisa}>Sisesta</button> <br></br>
@@ -35,6 +52,8 @@ function HaldaHinnad() {
                     <th>Hind</th>
                     <th>Lisaja</th>
                     <th>Kustuta</th>
+                    <th>Muuda</th>
+
                     </tr>
             </thead>
             <tbody>
@@ -45,6 +64,9 @@ function HaldaHinnad() {
                     <td>{hind.number}</td>
                     <td>{hind.lisaja}</td>
                     <td><button onClick={() => kustuta(index)}>x</button></td>
+                    <td><Link to={"/muuda-hind/" + index}>
+                    <button>Muuda</button>
+                    </Link></td>
                 </tr>)}
             </tbody>
         </table>

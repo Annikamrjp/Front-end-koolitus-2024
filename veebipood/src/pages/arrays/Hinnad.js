@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import hinnadFailist from '../../data/hinnad.json';
+import {Link} from 'react-router-dom';
 
 //                                      .json on ainuke, millele peab laiendi lisama
 // ./ --> samas kaustas
@@ -115,7 +116,9 @@ function Hinnad() {
       <br></br>
 
         {hinnad.map((hind, index) => <div key={index}>{hind.number}
-            
+           <Link to={"/hind/" + index}>
+           <button>Vaata lähemalt</button>
+           </Link> 
         </div>)}
     </div>
   )

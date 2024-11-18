@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import tootajadFailist from '../../data/tootajad.json';
+import {Link} from 'react-router-dom';
 
 // {"eesnimi": "", "ametikoht": "", "tel": "5342123"}
 
@@ -8,35 +9,35 @@ function Tootajad() {
   const otsingRef = useRef()
 
   function otsi() {
-    const vastus = tootajadFailist.filter(tootaja => tootaja.includes(otsingRef.current.value));
+    const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.includes(otsingRef.current.value));
     muudaTootajad(vastus);
 }
 
   function arvutaKokku() {
     let summa = 0;
-    tootajad.forEach(tootaja => summa = summa + tootaja.length)
+    tootajad.forEach(tootaja => summa = summa + tootaja.nimi.length)
     return summa;
 }
 
 // Sorteeri
 
 function sorteeriAZ() {
-  tootajad.sort((a, b) => a.localeCompare(b, "et"));
+  tootajad.sort((a, b) => a.nimi.localeCompare(b.nimi, "et"));
   muudaTootajad(tootajad.slice());
 }
 
 function sorteeriZA() {
-  tootajad.sort((a, b) => b.localeCompare(a, "et"));
+  tootajad.sort((a, b) => b.nimi.localeCompare(a.nimi, "et"));
   muudaTootajad(tootajad.slice());
 }
 
 function tahedKasvavalt() {
-  tootajad.sort((a, b) => a.length - b.length);
+  tootajad.sort((a, b) => a.nimi.length - b.nimi.length);
   muudaTootajad(tootajad.slice());
 }
 
 function tahedKahanevalt() {
-  tootajad.sort((a, b) => b.length - a.length);
+  tootajad.sort((a, b) => b.nimi.length - a.nimi.length);
   muudaTootajad(tootajad.slice());
 }
 
@@ -54,37 +55,37 @@ function tahedKahanevalt() {
   // Filtreeri
 
 function tapselt3Tahelised() {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.length === 3);
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.length === 3);
   muudaTootajad(vastus);
 }
 
 function rohkemKui5Tahte() {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.length >= 5);
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.length >= 5);
   muudaTootajad(vastus);
 }
 
 function sisaldabAiLuhendit() {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.includes("ai"));
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.includes("ai"));
   muudaTootajad(vastus);
 }
 
 function neljasTahtA() {
-  const vastus = tootajadFailist.filter(tootaja => tootaja[3] === "a");
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi[3] === "a");
   muudaTootajad(vastus);
 }
 
 function algabMTahega() {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.startsWith("M"));
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.startsWith("M"));
   muudaTootajad(vastus);
 }
 
 function paarisarv() {
-  const vastus = tootajadFailist.filter(tootaja => tootaja.length % 2 === 0);
+  const vastus = tootajadFailist.filter(tootaja => tootaja.nimi.length % 2 === 0);
   muudaTootajad(vastus);
 }
 
 function reset() {
-  muudaTootajad(["Anu", "Katariina", "Peeter", "Mait"])
+  muudaTootajad(tootajadFailist)
 }
   // Reset nupp
 
@@ -104,7 +105,6 @@ function reset() {
         <button onClick={sorteeriZA}>Z-A</button>
         <button onClick={tahedKasvavalt}>Kasvavalt</button>
         <button onClick={tahedKahanevalt}>Kahanevalt</button>
-        <button>! ! !</button>
 
       <br></br>
       <span>Filtreeri: </span>
@@ -121,7 +121,16 @@ function reset() {
       <br></br>
       <br></br>
 
-      {tootajad.map(tootaja => <div>{tootaja}</div>)}
+      {tootajad.map((tootaja, index) => 
+      <div key={index}>
+        {tootaja.nimi} - {tootaja.ametikoht} - {tootaja.tel}
+        <Link to={"/tootaja/" + index}>
+        <button>Vaata lähemalt</button>
+        </Link>
+        </div>
+      )}
+
+
     </div>
   )
 }

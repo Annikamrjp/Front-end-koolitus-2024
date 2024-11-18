@@ -1,6 +1,6 @@
 [
-    "Anu",
-    "Katariina",
-    "Peeter",
-    "Mait"
+    {"nimi": "Anu", "ametikoht": "turundusjuht", "tel": "55142563"},
+    {"nimi": "Katariina", "ametikoht": "ostujuht", "tel": "56262412"},
+    {"nimi": "Peeter", "ametikoht": "müügijuht", "tel": "52373129"},
+    {"nimi": "Mait", "ametikoht": "direktor", "tel": "54628123"}
 ]
